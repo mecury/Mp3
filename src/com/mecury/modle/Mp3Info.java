@@ -1,6 +1,9 @@
 package com.mecury.modle;
 
-public class Mp3Info {
+import android.os.Parcel;
+
+
+public class Mp3Info implements Parcelable{
 
 	private String id;
 	private String mp3name;
@@ -46,7 +49,6 @@ public class Mp3Info {
 		this.lrcname = lrcname;
 		this.lrcsize = lrcsize;
 	}
-	@Override
 	public String toString() {
 		return "Mp3Info [id=" + id + ", mp3name=" + mp3name + ", mp3size="
 				+ mp3size + ", lrcname=" + lrcname + ", lrcsize=" + lrcsize
@@ -54,5 +56,42 @@ public class Mp3Info {
 	}
 	public Mp3Info() {
 		super();
+	}
+	@Override
+	public int describeContents() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	@Override
+	public void writeToParcel(Parcel dest, int flags) {
+		// TODO Auto-generated method stub
+		dest.writeString(id);
+		dest.writeString(mp3name);
+		dest.writeString(mp3size);
+		dest.writeString(lrcname);
+		dest.writeString(lrcsize);
+		
+	}
+	public static final Parcelable.Creator<Mp3Info> CREATOR  = new Parcelable.Creator<Mp3Info>() {
+
+		@Override
+		public Mp3Info createFromParcel(Parcel source) {
+			// TODO Auto-generated method stub
+			return new Mp3Info(source);
+		}
+
+		@Override
+		public Mp3Info[] newArray(int size) {
+			// TODO Auto-generated method stub
+			return new Mp3Info[size];
+		}
+	};
+	
+	public Mp3Info(Parcel source){
+		id = source.readString();
+		mp3name = source.readString();
+		mp3size = source.readString();
+		lrcname = source.readString();
+		lrcsize = source.readString();
 	}
 }
