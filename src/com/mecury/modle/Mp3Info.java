@@ -1,9 +1,11 @@
 package com.mecury.modle;
 
+import java.io.Serializable;
+
 import android.os.Parcel;
 
 
-public class Mp3Info implements Parcelable{
+public class Mp3Info implements Parcelable,Serializable{
 
 	private String id;
 	private String mp3name;
