@@ -5,6 +5,10 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.mecury.modle.Mp3Info;
 
 import android.R.integer;
 import android.os.Environment;
@@ -72,9 +76,25 @@ public class FileUtils {
 		}
 		return file;
 	}
+	
+	/*
+	 * 读取目录中path中的数据
+	 */
+	public List<Mp3Info> getMp3Files(String path){
+		List<Mp3Info> mp3Infos = new ArrayList<Mp3Info>();
+		File file = new File(SDCardRoot + File.separator + path);
+		File [] files = file.listFiles();
+		for (int i = 0; i < files.length; i++) {
+			if (files[i].getName().endsWith("mp3")) {
+				Mp3Info mp3Info = new Mp3Info();
+				mp3Info.setMp3name(files[i].getName());
+				mp3Info.setMp3size((int)(files[i].length()) + "");
+				mp3Infos.add(mp3Info);
+			}
+		}
+		return mp3Infos;
+	}
 }
-
-
 
 
 
