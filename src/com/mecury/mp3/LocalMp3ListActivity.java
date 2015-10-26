@@ -7,11 +7,11 @@ import java.util.List;
 
 import com.mecury.Utils.FileUtils;
 import com.mecury.modle.Mp3Info;
+import com.mecury.sercive.PlayerService;
 
 import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.internal.widget.AdapterViewCompat.OnItemSelectedListener;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
